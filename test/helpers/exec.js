@@ -14,7 +14,8 @@ exports.fixture = async (...args) => {
 			AVA_EMIT_RUN_STATUS_OVER_IPC: 'I\'ll find a payphone baby / Take some time to talk to you'
 		},
 		cwd,
-		serialization
+		serialization,
+		stderr: 'inherit'
 	});
 
 	const stats = {
