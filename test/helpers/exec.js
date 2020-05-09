@@ -14,22 +14,30 @@ exports.fixture = async (...args) => {
 			AVA_EMIT_RUN_STATUS_OVER_IPC: 'I\'ll find a payphone baby / Take some time to talk to you'
 		},
 		cwd,
+		reject: false,
 		serialization,
 		stderr: 'inherit'
 	});
 
 	const stats = {
-		passed: []
+		passed: [],
+		uncaughtExceptions: []
 	};
 
-	running.on('message', message => {
+	running.on('message', statusEvent => {
 		if (serialization === 'json') {
-			message = v8.deserialize(Uint8Array.from(message));
+			statusEvent = v8.deserialize(Uint8Array.from(statusEvent));
 		}
 
-		switch (message.type) {
+		switch (statusEvent.type) {
+			case 'uncaught-exception': {
+				const {message, name, stack} = statusEvent.err;
+				stats.uncaughtExceptions.push({message, name, stack});
+				break;
+			}
+
 			case 'test-passed': {
-				const {title, testFile} = message;
+				const {title, testFile} = statusEvent;
 				stats.passed.push({title, file: path.posix.relative(cwd, testFile)});
 				break;
 			}
