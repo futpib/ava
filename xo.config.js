@@ -14,7 +14,7 @@ module.exports = {
 	},
 	overrides: [
 		{
-			files: '*.d.ts',
+			files: 'index.d.ts',
 			rules: {
 				'@typescript-eslint/member-ordering': 'off',
 				'@typescript-eslint/method-signature-style': 'off',
