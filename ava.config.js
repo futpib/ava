@@ -5,5 +5,6 @@ if (process.versions.node < '12.16.0') {
 
 export default {
 	files: ['test/**', '!test/**/{fixtures,helpers}/**', ...skipTests],
-	ignoredByWatcher: ['{coverage,docs,media,test-d,test-tap}/**']
+	ignoredByWatcher: ['{coverage,docs,media,test-d,test-tap}/**'],
+	timeout: '30s'
 };
