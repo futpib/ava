@@ -4,6 +4,8 @@ const exec = require('../../helpers/exec');
 test('requires node.js >= 12.16', async t => {
 	const result = await exec.fixture();
 
+	t.log(result.stdout);
+
 	if (process.versions.node >= '12.16.0') {
 		t.is(result.exitCode, 0);
 	} else {
