@@ -38,7 +38,7 @@ exports.fixture = async (...args) => {
 
 			case 'test-passed': {
 				const {title, testFile} = statusEvent;
-				stats.passed.push({title, file: path.posix.relative(cwd, testFile)});
+				stats.passed.push({title, file: path.relative(cwd, testFile)});
 				break;
 			}
 
