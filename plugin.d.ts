@@ -65,7 +65,7 @@ export type SharedWorkerRegistrationOptions<Data = unknown> = {
 	readonly filename: string;
 	readonly initialData?: Data;
 	readonly supportedProtocols: readonly SharedWorker.ProtocolIdentifier[];
-	readonly teardown: (worker: SharedWorker<Data>) => void;
+	readonly teardown?: (protocol: SharedWorker.Plugin.Protocol<Data>) => void; // eslint-disable-line @typescript-eslint/prefer-readonly-parameter-types
 };
 
 export function registerSharedWorker<Data = unknown> (options: SharedWorkerRegistrationOptions<Data>): SharedWorker.Plugin.Protocol<Data>;

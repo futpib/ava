@@ -16,6 +16,7 @@
 		"lib",
 		"*.js",
 		"!*.config.js",
+		"index.d.ts",
 		"*.d.ts"
 	],
 	"keywords": [
