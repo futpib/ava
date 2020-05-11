@@ -4,8 +4,9 @@ export namespace SharedWorker {
 	}
 
 	export type TestWorker<Data = unknown> = {
+		readonly id: string;
 		readonly file: string;
-		readonly exited: Promise<void>;
+		defer: <ReleaseFn> (fn: ReleaseFn) => ReleaseFn;
 		publish: (data: Data) => PublishedMessage<Data>;
 		subscribe: () => AsyncIterableIterator<ReceivedMessage<Data>>;
 	};
