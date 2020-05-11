@@ -25,12 +25,12 @@ export namespace SharedWorker {
 
 	export type BroadcastMessage<Data = unknown> = {
 		readonly id: string;
-		replies: () => () => AsyncIterableIterator<ReceivedMessage<Data>>;
+		replies: () => AsyncIterableIterator<ReceivedMessage<Data>>;
 	};
 
 	export type PublishedMessage<Data = unknown> = {
 		readonly id: string;
-		replies: () => () => AsyncIterableIterator<ReceivedMessage<Data>>;
+		replies: () => AsyncIterableIterator<ReceivedMessage<Data>>;
 	};
 
 	export type ReceivedMessage<Data = unknown> = {
